@@ -29,6 +29,7 @@ if (process.env.DOCKER && (prod ? group === 'main' : true)) {
     config.core.authUrl = 'http://auth_api:3030'
     config.core.userKey = fs.readFileSync('/run/secrets/nexus-main-key', 'utf-8').replace(/(\n|\r)+$/, '')
     config.core.userSecret = fs.readFileSync('/run/secrets/nexus-main-secret', 'utf-8').replace(/(\n|\r)+$/, '')
+    config.core.uid = node
   }
   module.exports = config
 }

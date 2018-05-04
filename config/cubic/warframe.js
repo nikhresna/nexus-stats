@@ -23,6 +23,7 @@ if (process.env.DOCKER && (prod ? group === 'warframe' : true)) {
     config.core.authUrl = 'http://auth_api:3030'
     config.core.userKey = fs.readFileSync('/run/secrets/nexus-warframe-key', 'utf-8').replace(/(\n|\r)+$/, '')
     config.core.userSecret = fs.readFileSync('/run/secrets/nexus-warframe-secret', 'utf-8').replace(/(\n|\r)+$/, '')
+    config.core.uid = node
   }
   module.exports = config
 }
