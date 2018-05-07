@@ -25,19 +25,13 @@ pipeline:
       - npm run build
       - npm test --production
     when:
-      branch: staging
-  deploy:
-    image: node
-    commands:
-      - echo "We're not quite there yet 😉"
-    when:
       branch: [ development, greenkeeper/* ]
 
   # Add to staging branch
   stage:
     image: node
     commands:
-      - git config --global user.email "devs@nexus-stats.com"
+      - git config --global user.email "apps@nexus-stats.com"
       - git config --global user.name "nexus-ci"
       - git fetch --all
       - sed '#/assets/bundles/#d' .gitignore # Keep webpack builds
@@ -50,6 +44,14 @@ pipeline:
     secrets: [ nexus_ci_token ]
     when:
       branch: development
+
+  # Deploy on staging server
+  deploy:
+    image: node
+    commands:
+      - echo "We're not quite there yet 😉"
+    when:
+      branch: staging
 
   # Final release to production
   release:
