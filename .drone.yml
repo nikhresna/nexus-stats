@@ -40,8 +40,9 @@ pipeline:
       - sed -i '/\\/assets\\/bundles\\//d' .gitignore # Keep webpack builds
       - git add -A
       - git commit -m "Add staging builds"
+      - git checkout development
       - git checkout staging
-      - git merge -s recursive -X theirs origin/development
+      - git merge -s recursive -X theirs development
       - git push 'https://nexus-ci:'$NEXUS_CI_TOKEN'@github.com/nexus-devs/nexus-stats' staging 2>/dev/null
         # ^ suppress output to /dev/null to keep secrets hidden
     secrets: [ nexus_ci_token ]
