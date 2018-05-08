@@ -3,8 +3,9 @@ pipeline:
     image: node
     commands:
       - npm install
+      - npm run toggle-webpack
     when:
-      branch: [ development, greenkeeper/*, staging ]
+      branch: [ development, greenkeeper/* ]
 
   # Smoke tests
   lint:
@@ -18,7 +19,6 @@ pipeline:
     image: node
     commands:
       - npm test
-      - rm -rf assets/bundles # Remove dev bundles
     when:
       branch: [ development, greenkeeper/* ]
 
@@ -50,6 +50,7 @@ pipeline:
     secrets: [ nexus_ci_token ]
     when:
       branch: development
+      event: [ push ]
 
   # Deploy on staging server
   deploy:
@@ -68,6 +69,7 @@ pipeline:
     secrets: [ gh_token ]
     when:
       branch: master
+      event: [ push ]
 
 services:
   mongodb:
