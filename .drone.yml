@@ -51,10 +51,19 @@ pipeline:
       event: [ push ]
 
   # Deploy on staging server
-  deploy:
-    image: node
+  docker:
+    image: alpine/git
     commands:
-      - echo "We're not quite there yet 😉"
+      - git clone https://github.com/nexus-stats/docker
+    when:
+      branch: staging
+  deploy:
+    image: plugins/docker
+    repo: nexusstats/nexus-stats
+    file: docker/app/prod/Dockerfile
+    tag: latest
+    no_cache: true
+    secrets: [ docker_username, docker_password ]
     when:
       branch: staging
 
