@@ -41,6 +41,8 @@ pipeline:
       - git add -A
       - git commit -m "Add staging builds"
       - git checkout development
+      - git add -A
+      - git commit -m "Add staging builds"
       - git checkout staging
       - git merge -s recursive -X theirs development
       - git push 'https://nexus-ci:'$NEXUS_CI_TOKEN'@github.com/nexus-devs/nexus-stats' staging 2>/dev/null
