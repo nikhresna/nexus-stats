@@ -56,6 +56,8 @@ pipeline:
   docker:
     image: alpine/git
     commands:
+      - git config --global user.email "apps@nexus-stats.com"
+      - git config --global user.name "nexus-ci"
       - git clone https://github.com/nexus-stats/docker
     when:
       branch: staging
