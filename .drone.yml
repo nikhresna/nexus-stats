@@ -59,7 +59,7 @@ pipeline:
       - mkdir -p docker
       - cd docker
       - git init
-      - git remode add origin https://github.com/nexus-devs/docker.git
+      - git remote add origin https://github.com/nexus-devs/docker.git
       - git fetch --all
       - git pull
     when:
