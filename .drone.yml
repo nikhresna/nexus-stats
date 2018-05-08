@@ -69,7 +69,6 @@ pipeline:
     repo: nexusstats/nexus-stats
     dockerfile: docker/app/prod/Dockerfile
     context: docker/app/prod/
-    tag: latest
     no_cache: true
     secrets: [ docker_username, docker_password ]
     when:
