@@ -67,7 +67,7 @@ pipeline:
   deploy:
     image: plugins/docker
     repo: nexusstats/nexus-stats
-    file: docker/app/prod/Dockerfile
+    dockerfile: docker/app/prod/Dockerfile
     tag: latest
     no_cache: true
     secrets: [ docker_username, docker_password ]
