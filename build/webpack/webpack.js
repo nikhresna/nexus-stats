@@ -1,5 +1,6 @@
 process.env.NODE_ENV = 'production'
 const webpack = require('webpack')
+const enabled = require(`${process.cwd()}/.webpack.json`).enable
 const rm = require('rimraf')
 const ci = process.env.DRONE
 
@@ -75,4 +76,6 @@ async function build () {
   process.exit()
 }
 
-build()
+if (enabled) {
+  build()
+}

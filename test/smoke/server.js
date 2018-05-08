@@ -12,7 +12,7 @@ const Client = require('cubic-client')
 const wfhooks = require(`${process.cwd()}/config/cubic/hooks/warframe.js`)
 const redisUrl = 'redis://redis'
 const mongoUrl = 'mongodb://mongodb'
-const webpack = require(`${process.cwd()}/.webpack.json`).enabled
+const webpack = require(`${process.cwd()}/.webpack.json`).enable
 const ci = process.env.DRONE
 const prod = process.env.NODE_ENV === 'production'
 const config = {
