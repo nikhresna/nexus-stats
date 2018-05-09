@@ -88,5 +88,9 @@ pipeline:
 services:
   mongodb:
     image: mongo
+    when:
+      branch: [ development, greenkeeper/* ]
   redis:
     image: redis
+    when:
+      branch: [ development, greenkeeper/* ]
