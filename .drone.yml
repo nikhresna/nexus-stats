@@ -60,7 +60,6 @@ pipeline:
       - git remote add origin https://github.com/nexus-devs/docker.git
       - git fetch --all
       - git checkout master
-      - chmod +x app/prod/entrypoint.sh
     when:
       branch: staging
   stage:
